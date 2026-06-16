@@ -1,1 +1,8 @@
-# Dependências serão adicionadas durante o desenvolvimento
+fastapi
+uvicorn
+sqlmodel
+pydantic-ai
+python-dotenv
+httpx
+pytest
+pytest-asyncio
