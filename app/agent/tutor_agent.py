@@ -2,6 +2,7 @@ import httpx
 import logging
 from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel
+from pydantic_ai.providers.openai import OpenAIProvider
 from dotenv import load_dotenv
 import os
 
@@ -13,7 +14,7 @@ logger = logging.getLogger(__name__)
 def _criar_modelo() -> OpenAIModel:
     return OpenAIModel(
         os.getenv("LLM_MODEL", "gpt-4o-mini"),
-        api_key=os.getenv("LLM_API_KEY"),
+        provider=OpenAIProvider(api_key=os.getenv("LLM_API_KEY")),
     )
 
 
