@@ -181,5 +181,14 @@ tests/
 
 ---
 
+## Evidências de teste
+
+Relatório técnico completo com capturas de tela de cada cenário testado (backend, frontend, autenticação, criação de tutor, embed e chat com IA):
+
+📄 [Evidencias_Tutores_DOT.pdf](docs/Evidencias_Tutores_DOT.pdf)
+
+---
+
 *Desafio técnico DOT Digital Group — Plataforma de Tutores Personalizados*
+*Candidato: **Silas Luiz Bom Fim***
 *Código produzido com auxílio de agentes de codificação (Claude Code — Anthropic)*
