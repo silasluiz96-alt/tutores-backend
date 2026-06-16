@@ -10,12 +10,15 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 
-def _criar_agente(instrucoes_sistema: str) -> Agent:
-    model = OpenAIModel(
+def _criar_modelo() -> OpenAIModel:
+    return OpenAIModel(
         os.getenv("LLM_MODEL", "gpt-4o-mini"),
         api_key=os.getenv("LLM_API_KEY"),
     )
-    return Agent(model=model, system_prompt=instrucoes_sistema)
+
+
+def _criar_agente(instrucoes_sistema: str) -> Agent:
+    return Agent(model=_criar_modelo(), system_prompt=instrucoes_sistema)
 
 
 async def buscar_conteudo_fonte(url: str) -> str:

@@ -18,9 +18,9 @@ def _buscar_historico(tutor_id: int, sessao_id: str, session: Session) -> list[d
     return [{"papel": m.papel, "conteudo": m.conteudo} for m in mensagens]
 
 
-def _salvar_mensagem(tutor_id: int, sessao_id: str, papel: str, conteudo: str, session: Session):
-    msg = Mensagem(tutor_id=tutor_id, sessao_id=sessao_id, papel=papel, conteudo=conteudo)
-    session.add(msg)
+def _salvar_turno(tutor_id: int, sessao_id: str, msg_usuario: str, msg_assistente: str, session: Session):
+    session.add(Mensagem(tutor_id=tutor_id, sessao_id=sessao_id, papel="usuario", conteudo=msg_usuario))
+    session.add(Mensagem(tutor_id=tutor_id, sessao_id=sessao_id, papel="assistente", conteudo=msg_assistente))
     session.commit()
 
 
@@ -42,7 +42,6 @@ async def processar_chat(tutor_id: int, dados: ChatInput, session: Session) -> C
         mensagem_usuario=dados.mensagem,
     )
 
-    _salvar_mensagem(tutor_id, dados.sessao_id, "usuario", dados.mensagem, session)
-    _salvar_mensagem(tutor_id, dados.sessao_id, "assistente", resposta, session)
+    _salvar_turno(tutor_id, dados.sessao_id, dados.mensagem, resposta, session)
 
     return ChatOutput(sessao_id=dados.sessao_id, resposta=resposta)
