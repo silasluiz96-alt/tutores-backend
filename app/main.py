@@ -3,7 +3,8 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from app.database import criar_tabelas
-from app.api import tutors
+from app.models import tutor, mensagem  # noqa: F401 — garante registro das tabelas
+from app.api import tutors, chat
 import os
 import logging
 
@@ -43,6 +44,7 @@ def startup():
 
 
 app.include_router(tutors.router, prefix="/api/v1")
+app.include_router(chat.router, prefix="/api/v1")
 
 
 @app.get("/health")
