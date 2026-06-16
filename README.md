@@ -151,7 +151,7 @@ tests/
 
 - SQLite não suporta conexões concorrentes em escala — adequado apenas para demos e uso individual
 - O fetch de fontes é limitado a 3 000 caracteres por URL
-- Não há rate limiting por tutor ou por sessão
+- Não há rate limiting por tutor ou por sessão — omitido intencionalmente no MVP pois o demo é de uso controlado (admin único, iframe em ambiente de avaliação); para produção, `slowapi` resolve com poucas linhas (ver Próximos Passos)
 - A API Key é uma string estática — sem rotação ou múltiplos admins
 - Histórico de chat é armazenado indefinidamente (sem TTL ou paginação)
 
